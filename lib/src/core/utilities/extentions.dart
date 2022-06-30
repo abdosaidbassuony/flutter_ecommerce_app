@@ -17,11 +17,7 @@ extension OnPressed on Widget {
                     shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(borderRadius: borderRadius),
                 )),
-                onPressed: () {
-                  if (onPressed != null) {
-                    onPressed();
-                  }
-                },
+                onPressed: () => onPressed(),
                 child: Container()),
           )
         ],

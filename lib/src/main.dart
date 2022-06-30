@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'presentation/ui/shared_widgets/customRoute.dart';
 import 'package:ecomarce_app/src/core/config/route.dart';
 import 'package:ecomarce_app/src/core/resources/theme.dart';
-import 'package:ecomarce_app/src/injector.dart';
+import 'package:ecomarce_app/src/%C2%A0di/injector.dart';
 import 'package:ecomarce_app/src/presentation/bloc/home_bloc/home_bloc.dart';
 import 'package:ecomarce_app/src/presentation/ui/main_screen/screen/main_screen.dart';
 import 'package:ecomarce_app/src/presentation/ui/product_details/screen/product_detail.dart';
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: (RouteSettings settings) {
           if (settings.name!.contains('detail')) {
             return CustomRoute<bool>(
-                builder: (BuildContext context) => ProductDetailPage());
+                builder: (BuildContext context) => const ProductDetailPage());
           } else {
             return CustomRoute<bool>(
                 builder: (BuildContext context) => const MainPage());
