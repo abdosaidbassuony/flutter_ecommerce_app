@@ -31,6 +31,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _onSelectProductCartEvent(
       SelectProductCartEvent event, emit) async {
+    _changeProductSelection(event);
+    emit(ProductCardSelectedState(homeModel: homeModel!));
+    emit(HomeInitialState());
+  }
+
+  void _changeProductSelection(SelectProductCartEvent event) {
     for (var element in homeModel!.productList) {
       if (element.id == event.product!.id) {
         element.isSelected = true;
@@ -38,12 +44,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         element.isSelected = false;
       }
     }
-    emit(ProductCardSelectedState(homeModel: homeModel!));
-    emit(HomeInitialState());
   }
 
   Future<void> _onSelectCategoryCartEvent(
       SelectCategoryCartEvent event, emit) async {
+    _changeCategorySelection(event);
+    emit(ProductCardSelectedState(homeModel: homeModel!));
+    emit(HomeInitialState());
+  }
+
+  void _changeCategorySelection(SelectCategoryCartEvent event) {
     for (var element in homeModel!.categoryList) {
       if (element.id == event.category!.id) {
         element.isSelected = true;
@@ -51,7 +61,5 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         element.isSelected = false;
       }
     }
-    emit(ProductCardSelectedState(homeModel: homeModel!));
-    emit(HomeInitialState());
   }
 }

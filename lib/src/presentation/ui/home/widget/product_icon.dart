@@ -57,9 +57,7 @@ class ProductIcon extends StatelessWidget {
                 ],
               ),
             ).ripple(
-              () {
-                onSelected!(model!);
-              },
+              () => onSelected!(model!),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
           );

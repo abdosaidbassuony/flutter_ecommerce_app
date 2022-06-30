@@ -1,3 +1,4 @@
+import 'package:ecomarce_app/src/presentation/ui/home/widget/home_screen_body_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,12 +28,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
-  void dispose() {
-    BlocProvider.of<HomeBloc>(context).close();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
       listener: (context, state) {
@@ -51,34 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
       },
       builder: (context, state) {
         if (state is HomeGetDateSuccessfullyState) {
-          return _homeBodyWidget(state.homeModel!);
+          return HomeScreenBodyWidget(homeModel: state.homeModel!);
         } else if (state is ProductCardSelectedState) {
-          return _homeBodyWidget(state.homeModel!);
+          return HomeScreenBodyWidget(homeModel: state.homeModel!);
         }
-        return _homeBodyWidget(homeModel!);
+        return HomeScreenBodyWidget(homeModel: homeModel!);
       },
     );
-  }
-
-  Widget _homeBodyWidget(HomeModel? homeModel) {
-    return homeModel != null
-        ? SizedBox(
-            height: MediaQuery.of(context).size.height - 210,
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              dragStartBehavior: DragStartBehavior.down,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const SearchWidget(),
-                  CategoryListWidget(categoriesList: homeModel.categoryList),
-                  ProductListWidget(productsList: homeModel.productList),
-                ],
-              ),
-            ),
-          )
-        : _homeEmptyScreenWidget();
   }
 
   Future _showErrorDialog() async {}
@@ -89,5 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _setHomeModelDate(HomeModel homeModel) => this.homeModel = homeModel;
 
-  _homeEmptyScreenWidget() {}
+  @override
+  void dispose() {
+    BlocProvider.of<HomeBloc>(context).close();
+    super.dispose();
+  }
 }
