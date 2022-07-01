@@ -2,6 +2,7 @@ import 'package:ecomarce_app/src/data/model/home_model.dart';
 import 'package:ecomarce_app/src/presentation/ui/home/widget/category_list_widget.dart';
 import 'package:ecomarce_app/src/presentation/ui/home/widget/product_list_widget.dart';
 import 'package:ecomarce_app/src/presentation/ui/home/widget/search_widget.dart';
+import 'package:ecomarce_app/src/presentation/ui/shared_widgets/app_bar_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +14,9 @@ class HomeScreenBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return homeModel != null
-        ? SizedBox(
-            height: MediaQuery.of(context).size.height - 210,
-            child: SingleChildScrollView(
+        ? Scaffold(
+            appBar: appBarWidget("Home", context),
+            body: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               dragStartBehavior: DragStartBehavior.down,
               child: Column(
@@ -23,6 +24,7 @@ class HomeScreenBodyWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SearchWidget(),
+                  const SizedBox(height: 32),
                   CategoryListWidget(categoriesList: homeModel!.categoryList),
                   ProductListWidget(productsList: homeModel!.productList),
                 ],
