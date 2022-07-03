@@ -1,8 +1,8 @@
-import 'package:ecomarce_app/src/core/utilities/extentions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/resources/light_color.dart';
 import '../../../../core/resources/theme.dart';
+import 'package:ecomarce_app/src/core/utilities/extentions.dart';
 
 class SearchWidget extends StatefulWidget {
   const SearchWidget({Key? key}) : super(key: key);

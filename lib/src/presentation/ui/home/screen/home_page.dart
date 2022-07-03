@@ -1,13 +1,9 @@
-import 'package:ecomarce_app/src/presentation/ui/home/widget/home_screen_body_widget.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/home_bloc/home_bloc.dart';
-import '../widget/category_list_widget.dart';
-import '../widget/product_list_widget.dart';
 import 'package:ecomarce_app/src/data/model/home_model.dart';
-import 'package:ecomarce_app/src/presentation/ui/home/widget/search_widget.dart';
+import 'package:ecomarce_app/src/presentation/ui/home/widget/home_screen_body_widget.dart';
 
 class MyHomePage extends StatefulWidget {
   final String? title;
@@ -65,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void dispose() {
-    BlocProvider.of<HomeBloc>(context).close();
+    // BlocProvider.of<HomeBloc>(context).close();
     super.dispose();
   }
 }

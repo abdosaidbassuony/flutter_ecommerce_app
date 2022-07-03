@@ -8,6 +8,7 @@ import 'package:ecomarce_app/src/%C2%A0di/injector.dart';
 import 'package:ecomarce_app/src/presentation/bloc/home_bloc/home_bloc.dart';
 import 'package:ecomarce_app/src/presentation/ui/main_screen/screen/main_screen.dart';
 import 'package:ecomarce_app/src/presentation/ui/product_details/screen/product_detail.dart';
+import 'package:ecomarce_app/src/presentation/bloc/main_screen_bloc/main_screen_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => HomeBloc(injector()))],
+      providers: [
+        BlocProvider(create: (context) => HomeBloc(injector())),
+        BlocProvider<MainScreenBloc>(
+            create: (context) => injector(), child: const MainPage())
+      ],
       child: MaterialApp(
         title: 'E-Commerce ',
         theme: AppTheme.lightTheme.copyWith(
