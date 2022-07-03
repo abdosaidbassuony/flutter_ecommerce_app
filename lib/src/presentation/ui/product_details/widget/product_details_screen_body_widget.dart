@@ -1,12 +1,8 @@
 import 'package:ecomarce_app/src/core/resources/light_color.dart';
-import 'package:ecomarce_app/src/core/resources/theme.dart';
-import 'package:ecomarce_app/src/core/utilities/extentions.dart';
-import 'package:ecomarce_app/src/data/data_source/data.dart';
 import 'package:ecomarce_app/src/presentation/ui/product_details/widget/app_bar_widget.dart';
 import 'package:ecomarce_app/src/presentation/ui/product_details/widget/product_details_category_widget.dart';
 import 'package:ecomarce_app/src/presentation/ui/product_details/widget/product_details_imge_widget.dart';
 import 'package:ecomarce_app/src/presentation/ui/product_details/widget/product_details_widget.dart';
-import 'package:ecomarce_app/src/presentation/ui/shared_widgets/title_text.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailsScreenBodyWidget extends StatefulWidget {
@@ -40,7 +36,7 @@ class _ProductDetailsScreenBodyWidgetState
     super.dispose();
   }
 
-  FloatingActionButton _flotingButton() {
+  FloatingActionButton _floatingButton() {
     return FloatingActionButton(
       onPressed: () {},
       backgroundColor: LightColor.orange,
@@ -52,7 +48,7 @@ class _ProductDetailsScreenBodyWidgetState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: _flotingButton(),
+      floatingActionButton: _floatingButton(),
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
