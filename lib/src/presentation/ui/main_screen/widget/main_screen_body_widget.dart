@@ -6,18 +6,12 @@ import 'package:ecomarce_app/src/presentation/ui/home/screen/home_page.dart';
 import 'package:ecomarce_app/src/presentation/ui/shopping_cart/screen/shopping_cart_page.dart';
 import 'package:ecomarce_app/src/presentation/bloc/main_screen_bloc/main_screen_bloc.dart';
 
-class MainScreenBodyWidget extends StatefulWidget {
+class MainScreenBodyWidget extends StatelessWidget {
   final int? currentIndex;
 
-  const MainScreenBodyWidget({Key? key, this.currentIndex = 0})
-      : super(key: key);
+  MainScreenBodyWidget({Key? key, this.currentIndex = 0}) : super(key: key);
 
-  @override
-  State<MainScreenBodyWidget> createState() => _MainScreenBodyWidgetState();
-}
-
-class _MainScreenBodyWidgetState extends State<MainScreenBodyWidget> {
-  List<BottomNavigationBarItem> navigationItem = [
+  final List<BottomNavigationBarItem> _navigationItem = [
     const BottomNavigationBarItem(
         icon: Icon(Icons.home, color: LightColor.orange),
         label: "",
@@ -39,7 +33,7 @@ class _MainScreenBodyWidgetState extends State<MainScreenBodyWidget> {
         activeIcon: Icon(Icons.favorite_border, color: LightColor.orange)),
   ];
 
-  List<Widget> listOfScreen = [
+  final List<Widget> _listOfScreen = [
     const MyHomePage(),
     const ShoppingCartPage(),
     const MyHomePage(),
@@ -50,16 +44,16 @@ class _MainScreenBodyWidgetState extends State<MainScreenBodyWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        items: navigationItem,
+        items: _navigationItem,
         type: BottomNavigationBarType.fixed,
-        onTap: _onBottomNavigationTapped,
-        currentIndex: widget.currentIndex!,
+        onTap: (int value) => _onBottomNavigationTapped(value, context),
+        currentIndex: currentIndex!,
       ),
-      body: listOfScreen[widget.currentIndex!],
+      body: _listOfScreen[currentIndex!],
     );
   }
 
-  void _onBottomNavigationTapped(int value) {
+  void _onBottomNavigationTapped(int value, BuildContext context) {
     BlocProvider.of<MainScreenBloc>(context)
         .add(BottomNavigationTapEvent(currentIndex: value));
   }

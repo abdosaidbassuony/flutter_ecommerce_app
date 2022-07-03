@@ -4,14 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecomarce_app/src/presentation/ui/main_screen/widget/main_screen_body_widget.dart';
 import 'package:ecomarce_app/src/presentation/bloc/main_screen_bloc/main_screen_bloc.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+class MainPage extends StatelessWidget {
+  MainPage({Key? key}) : super(key: key);
 
-  @override
-  createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
   int? currentSelectedIndex = 0;
 
   @override

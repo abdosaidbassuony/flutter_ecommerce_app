@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => HomeBloc(injector())),
         BlocProvider<MainScreenBloc>(
-            create: (context) => injector(), child: const MainPage())
+            create: (context) => injector(), child: MainPage())
       ],
       child: MaterialApp(
         title: 'E-Commerce ',
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
                 builder: (BuildContext context) => const ProductDetailPage());
           } else {
             return CustomRoute<bool>(
-                builder: (BuildContext context) => const MainPage());
+                builder: (BuildContext context) =>  MainPage());
           }
         },
         initialRoute: "MainPage",
